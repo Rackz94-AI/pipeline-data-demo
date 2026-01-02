@@ -83,6 +83,12 @@ def detect_anomalies(data, pressure_threshold=1500, temp_threshold=200):
     
     return anomalies
 
-
+def send_alert(anomaly):
+    """Send an alert for critical anomalies."""
+    if anomaly is None:
+        return None
+    message = f"ALERT: {anomaly['type']} detected at sensor {anomaly['sensor_id']}"
+    print(message)
+    return message
 if __name__ == "__main__":
     print("Pipeline Data Processor v1.0")
